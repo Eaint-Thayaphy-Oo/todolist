@@ -35,4 +35,8 @@ Route::get('post/editPage/{id}', [PostController::class, 'editPage'])->name('pos
 
 Route::post('post/update', [PostController::class, 'update'])->name('post#update');
 
-Route::get('/', [StudentController::class, 'create'])->name('student#home');
+Route::get('/', [StudentController::class, 'home'])->name('student#home');
+
+Route::get('student/createPage',[StudentController::class,'create'])->name('student#createPage');
+
+Route::post('student/create', [StudentController::class,'studentCreate'])->name('student#create');
