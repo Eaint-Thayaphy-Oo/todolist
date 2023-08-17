@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,5 @@ Route::get('post/updatePage/{id}', [PostController::class, 'updatePage'])->name(
 Route::get('post/editPage/{id}', [PostController::class, 'editPage'])->name('post#editPage');
 
 Route::post('post/update', [PostController::class, 'update'])->name('post#update');
+
+Route::get('/', [StudentController::class, 'create'])->name('student#home');
