@@ -15,7 +15,9 @@ class StudentController extends Controller
 
     //student create page
     public function create() {
-        return view('student.create');
+        $students = Student::all()->toArray();
+        //dd($students[1]);
+        return view('student.create' , compact('students'));
     }
 
     //student create

@@ -27,11 +27,11 @@
             </div>
             <div class="col-7">
                 <div class="data-container">
-                    @for ($i = 0; $i < 2; $i++)
+                    @foreach ($students as $item)
                         <div class="post p-3 shadow-sm mb-4">
-                            <h5>name</h5>
-                            <h5>email</h5>
-                            <h5>address</h5>
+                            <h5>{{$item['name']}}</h5>
+                            {{-- <h5>email</h5>
+                            <h5>address</h5> --}}
                             <div class="text-end">
                                 <a href="">
                                     <button class="btn btn-sm btn-danger"><i class="fa-solid fa-trash">ဖျက်ရန်</i></button>
@@ -42,7 +42,7 @@
                                 </a>
                             </div>
                         </div>
-                    @endfor
+                    @endforeach
                 </div>
             </div>
         </div>
