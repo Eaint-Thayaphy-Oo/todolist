@@ -27,11 +27,11 @@
             </div>
             <div class="col-7">
                 <div class="data-container">
-                    @foreach ($students as $item)
+                    @foreach ($students as $student)
                         <div class="post p-3 shadow-sm mb-4">
-                            <h5>{{$item['name']}}</h5>
-                            {{-- <h5>email</h5>
-                            <h5>address</h5> --}}
+                            <h5>{{ $student['name'] }}</h5>
+                            <h5>{{ $student['email'] }}</h5>
+                            <h5>{{ $student['address'] }}</h5>
                             <div class="text-end">
                                 <a href="">
                                     <button class="btn btn-sm btn-danger"><i class="fa-solid fa-trash">ဖျက်ရန်</i></button>

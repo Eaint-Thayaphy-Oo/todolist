@@ -8,20 +8,18 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-    //home page
-    public function home() {
-        return view('student.create');
-    }
-
     //student create page
-    public function create() {
-        $students = Student::all()->toArray();
-        //dd($students[1]);
-        return view('student.create' , compact('students'));
+    public function create()
+    {
+        $students = Student::orderBy('created_at','desc')->get()->toArray();
+        // $students = Student::all()->toArray();
+        // dd($students[0]['name']);
+        return view('student.create', compact('students'));
     }
 
     //student create
-    public function studentCreate(Request $request) {
+    public function studentCreate(Request $request)
+    {
         // dd($request->all());
         // $data = [
         //     'name' => $request->studentName,
@@ -35,13 +33,14 @@ class StudentController extends Controller
     }
 
     //get student data
-    private function getStudentData($request) {
+    private function getStudentData($request)
+    {
         // dd("this is private function call test");
         $response = [
             'name' => $request->studentName,
             'email' => $request->studentEmail,
             'address' => $request->studentAddress
         ];
-        return($response);
+        return ($response);
     }
 }
