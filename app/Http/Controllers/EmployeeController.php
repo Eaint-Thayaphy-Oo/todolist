@@ -10,7 +10,9 @@ class EmployeeController extends Controller
     //employee create page
     public function create()
     {
-        return view('employee.create');
+        $employees = Employee::orderBy('created_at', 'desc')->get()->toArray();
+        // dd($employees);
+        return view('employee.create', compact('employees'));
     }
 
     //employee create

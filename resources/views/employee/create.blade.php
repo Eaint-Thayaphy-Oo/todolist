@@ -37,24 +37,24 @@
             </div>
             <div class="col-7">
                 <div class="data-container">
-                    <div class="post p-3 shadow-sm mb-4">
-                        <h5>Name</h5>
-                        <h5>Email</h5>
-                        <h5>Phone</h5>
-                        <h5>Address</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore repellendus officiis nisi
-                            doloribus ut quisquam minima cum laboriosam obcaecati inventore corrupti tempora, eveniet
-                            mollitia recusandae? Ea dolores veritatis qui nesciunt.</p>
-                        <div class="text-end">
-                            <a href="">
-                                <button class="btn btn-sm btn-danger"><i class="fa-solid fa-trash">ဖျက်ရန်</i></button>
-                            </a>
-                            <a href="">
-                                <button class="btn btn-sm btn-primary"><i
-                                        class="fa-solid fa-file-lines">အပြည့်အစုံဖတ်ရန်</i></button>
-                            </a>
+                    @foreach ($employees as $item)
+                        <div class="post p-3 shadow-sm mb-4">
+                            <h5>{{ $item['employee_name'] }}</h5>
+                            <h5>{{ $item['employee_email'] }}</h5>
+                            <h5>{{ $item['employee_phone'] }}</h5>
+                            <h5>{{ $item['employee_address'] }}</h5>
+                            <p>{{ $item['employee_description'] }}</p>
+                            <div class="text-end">
+                                <a href="">
+                                    <button class="btn btn-sm btn-danger"><i class="fa-solid fa-trash">ဖျက်ရန်</i></button>
+                                </a>
+                                <a href="">
+                                    <button class="btn btn-sm btn-primary"><i
+                                            class="fa-solid fa-file-lines">အပြည့်အစုံဖတ်ရန်</i></button>
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
