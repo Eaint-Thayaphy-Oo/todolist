@@ -30,4 +30,5 @@ Route::post('post/update', [PostController::class, 'update'])->name('post#update
 //Routes for EmployeeCRUD
 Route::get('/', [EmployeeController::class, 'create'])->name('employee#home');
 Route::get('employee/createPage', [EmployeeController::class, 'create'])->name('employee#createPage');
-Route::post('employee/create',[EmployeeController::class,'employeeCreate'])->name('employee#create');
+Route::post('employee/create', [EmployeeController::class, 'employeeCreate'])->name('employee#create');
+Route::get('employee/delete/{id}', [EmployeeController::class, 'employeeDelete'])->name('employee#delete');

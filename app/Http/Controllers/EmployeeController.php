@@ -23,6 +23,13 @@ class EmployeeController extends Controller
         return redirect()->route('employee#createPage');
     }
 
+    //employee delete page
+    public function employeeDelete($id) {
+        //dd($id);
+        Employee::where('id',$id)->delete();
+        return redirect()->route('employee#createPage');
+    }
+
     //get employee data
     private function getEmployeeData($request)
     {
