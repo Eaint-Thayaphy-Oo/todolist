@@ -24,10 +24,29 @@ class EmployeeController extends Controller
     }
 
     //employee delete page
-    public function employeeDelete($id) {
+    public function employeeDelete($id)
+    {
         //dd($id);
-        Employee::where('id',$id)->delete();
+        Employee::where('id', $id)->delete();
         return redirect()->route('employee#createPage');
+    }
+
+    //employee update page
+    public function updatePage($id)
+    {
+        //dd($id);
+        $employee = Employee::where('id', $id)->get()->toArray();
+        //dd($employee[0]['employee_name']);
+        return view('employee.update', compact('employee'));
+    }
+
+    //employee edit page
+    public function editPage($id)
+    {
+        // dd($id);
+        $employee = Employee::where('id', $id)->first()->toArray();
+        // dd($employee);
+        return view('employee.edit', compact('employee'));
     }
 
     //get employee data

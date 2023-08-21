@@ -32,3 +32,5 @@ Route::get('/', [EmployeeController::class, 'create'])->name('employee#home');
 Route::get('employee/createPage', [EmployeeController::class, 'create'])->name('employee#createPage');
 Route::post('employee/create', [EmployeeController::class, 'employeeCreate'])->name('employee#create');
 Route::get('employee/delete/{id}', [EmployeeController::class, 'employeeDelete'])->name('employee#delete');
+Route::get('employee/updatePage/{id}', [EmployeeController::class, 'updatePage'])->name('employee#updatePage');
+Route::get('employee/editPage/{id}', [EmployeeController::class, 'editPage'])->name('employee#editPage');

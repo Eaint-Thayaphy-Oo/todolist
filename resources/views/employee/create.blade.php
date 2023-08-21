@@ -39,7 +39,7 @@
                 <div class="data-container">
                     @foreach ($employees as $item)
                         <div class="post p-3 shadow-sm mb-4">
-                            {{ $item['id'] }}
+                            {{-- {{ $item['id'] }} --}}
                             <h5>{{ $item['employee_name'] }}</h5>
                             <h5>{{ $item['employee_email'] }}</h5>
                             <h5>{{ $item['employee_phone'] }}</h5>
@@ -49,7 +49,7 @@
                                 <a href="{{ route('employee#delete', $item['id']) }}">
                                     <button class="btn btn-sm btn-danger"><i class="fa-solid fa-trash">ဖျက်ရန်</i></button>
                                 </a>
-                                <a href="">
+                                <a href="{{ route('employee#updatePage', $item['id']) }}">
                                     <button class="btn btn-sm btn-primary"><i
                                             class="fa-solid fa-file-lines">အပြည့်အစုံဖတ်ရန်</i></button>
                                 </a>
