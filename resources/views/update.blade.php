@@ -14,7 +14,7 @@
         </div>
         <div class="row my-3">
             <div class="col-3 offset-8">
-                <a href="{{ route('post#editPage', $post['id']) }}">
+                <a href="{{ route('post#editPage', $post[0]['id']) }}">
                     <button class="btn bg-dark text-white">Edit</button>
                 </a>
             </div>
