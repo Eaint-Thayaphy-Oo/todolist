@@ -24,9 +24,9 @@ Route::get('testing', function () {
     return "this is testing...";
 })->name('test');
 
-// Route::get('post/delete/{id}', [PostController::class,'postDelete'])->name('post#delete');
+Route::get('post/delete/{id}', [PostController::class,'postDelete'])->name('post#delete');
 
-Route::delete('post/delete/{id}', [PostController::class, 'postDelete'])->name('post#delete');
+// Route::delete('post/delete/{id}', [PostController::class, 'postDelete'])->name('post#delete');
 
 Route::get('post/updatePage/{id}', [PostController::class, 'updatePage'])->name('post#updatePage');
 
