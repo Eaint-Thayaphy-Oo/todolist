@@ -49,6 +49,17 @@ class EmployeeController extends Controller
         return view('employee.edit', compact('employee'));
     }
 
+    //update employee
+    public function update(Request $request)
+    {
+        // dd($request->all());
+        $updateData = $this->getEmployeeData($request);
+        //dd($updateData);
+        $id = $request->employeeId;
+        Employee::where('id', $id)->update($updateData);
+        return redirect()->route('employee#createPage');
+    }
+
     //get employee data
     private function getEmployeeData($request)
     {

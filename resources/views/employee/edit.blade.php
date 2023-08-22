@@ -7,7 +7,7 @@
                 <div class="my-3">
                     <a href="" class="text-decoration-none text-black"><i class="fa-solid fa-arrow-left"></i>back</a>
                 </div>
-                <form action="" method="">
+                <form action="{{ route('employee#update') }}" method="post">
                     @csrf
                     <label>Employee Name</label>
                     <input type="hidden" name="employeeId" value="{{ $employee['id'] }}">

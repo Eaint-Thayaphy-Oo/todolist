@@ -34,3 +34,4 @@ Route::post('employee/create', [EmployeeController::class, 'employeeCreate'])->n
 Route::get('employee/delete/{id}', [EmployeeController::class, 'employeeDelete'])->name('employee#delete');
 Route::get('employee/updatePage/{id}', [EmployeeController::class, 'updatePage'])->name('employee#updatePage');
 Route::get('employee/editPage/{id}', [EmployeeController::class, 'editPage'])->name('employee#editPage');
+Route::post('employee/update', [EmployeeController::class, 'update'])->name('employee#update');
