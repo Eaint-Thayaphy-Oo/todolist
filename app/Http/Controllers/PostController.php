@@ -64,6 +64,7 @@ class PostController extends Controller
     //update post
     public function update(Request $request)
     {
+        // dd($request->all());
         $updateData = $this->getPostData($request);
         $id = $request->postId;
         Post::where('id', $id)->update($updateData);
