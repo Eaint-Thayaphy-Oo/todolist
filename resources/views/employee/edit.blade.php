@@ -5,7 +5,8 @@
         <div class="row mt-5">
             <div class="col-6 offset-3">
                 <div class="my-3">
-                    <a href="" class="text-decoration-none text-black"><i class="fa-solid fa-arrow-left"></i>back</a>
+                    <a href="{{ route('employee#updatePage', $employee['id']) }}" class="text-decoration-none text-black"><i
+                            class="fa-solid fa-arrow-left"></i>back</a>
                 </div>
                 <form action="{{ route('employee#update') }}" method="post">
                     @csrf
