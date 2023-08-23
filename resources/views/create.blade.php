@@ -5,6 +5,34 @@
         <div class="row mt-5">
             <div class="col-5">
                 <div class="p-3">
+                    @if (session('insertSuccess'))
+                        <div class="alert-message">
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong>{{ session('insertSuccess') }}</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        </div>
+                    @endif
+
+                    @if (session('updateSuccess'))
+                        <div class="alert-message">
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <strong>{{ session('updateSuccess') }}</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        </div>
+                    @endif
+
+                    @if (session('deleteSuccess'))
+                        <div class="alert-message">
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>{{ session('deleteSuccess') }}</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        </div>
+                    @endif
                     <form action="{{ route('post#create') }}" method="post">
                         @csrf
                         <div class="text-group mb-3">
@@ -21,6 +49,7 @@
                 </div>
             </div>
             <div class="col-7">
+                <h3 class="mb-3">Total - {{ $posts->total() }}</h3>
                 <div class="data-container">
                     @foreach ($posts as $item)
                         <div class="post p-3 shadow-sm mb-4">
@@ -55,6 +84,7 @@
                         </div>
                     @endfor --}}
                 </div>
+                {{ $posts->links() }}
             </div>
         </div>
     </div>

@@ -11,7 +11,9 @@ class PostController extends Controller
 
     public function create()
     {
-        $posts = Post::orderBy('created_at', 'desc')->get()->toArray();
+        $posts = Post::orderBy('created_at', 'desc')->paginate(3);
+        // dd($posts);
+        // dd($posts['first_page_url']);
         // $posts = Post::all()->toArray();
         //dd($posts[0]['title'])->toArray();
         return view('create', compact('posts'));
@@ -27,7 +29,7 @@ class PostController extends Controller
         //return view('create');
         // return back();
         //return redirect('testing'); //url
-        return redirect()->route('post#createPage'); //route
+        return redirect()->route('post#createPage')->with(['insertSuccess' => 'Post ဖန်တီးခြင်းအောင်မြင်ပါသည်။']); //route
     }
 
     //post delete
@@ -36,7 +38,7 @@ class PostController extends Controller
         // dd($id);
         //first way
         Post::where('id', $id)->delete();
-        return redirect()->route('post#createPage');
+        return redirect()->route('post#createPage')->with(['deleteSuccess' => 'Delete လုပ်ခြင်းအောင်မြင်ပါသည်။']);
         //second way
         // $post = Post::find($id);
         // $post->delete();
@@ -68,7 +70,7 @@ class PostController extends Controller
         $updateData = $this->getPostData($request);
         $id = $request->postId;
         Post::where('id', $id)->update($updateData);
-        return redirect()->route('post#createPage');
+        return redirect()->route('post#createPage')->with(['updateSuccess' => 'Update လုပ်ခြင်းအောင်မြင်ပါသည်။']);;
         // dd($updateData);
     }
 
