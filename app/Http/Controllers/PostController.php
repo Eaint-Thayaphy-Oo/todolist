@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
@@ -22,6 +23,25 @@ class PostController extends Controller
     //post create
     public function postCreate(Request $request)
     {
+        // Old Validation
+        // $validator = Validator::make($request->all(), [
+        //     'title' => 'required',
+        //     'image' => 'required',
+        // ]);
+
+        // if ($validator->false()) {
+        //     return back()
+        //         ->withErrors($validator)
+        //         ->withInput();
+        // }
+
+        //New Validation
+        $validationRules = [
+            'postTitle' => 'required',
+            'postDescription' => 'required'
+        ];
+        Validator::make($request->all(), $validationRules)->validate();
+
         //dd($request->all());
         $data = $this->getPostData($request);
         //dd($data);

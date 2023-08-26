@@ -33,16 +33,39 @@
                             </div>
                         </div>
                     @endif
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     <form action="{{ route('post#create') }}" method="post">
                         @csrf
                         <div class="text-group mb-3">
                             <label for="">Post Title</label>
-                            <input type="text" name="postTitle" class="form-control" placeholder="Enter Post Title..."
-                                required>
+                            <input type="text" name="postTitle" value="{{ old('postTitle') }}"
+                                class="form-control @error('postTitle') is-invalid @enderror"
+                                placeholder="Enter Post Title...">
+                            @error('postTitle')
+                                <div class="invalid-feedback">
+                                    Post Title is required.
+                                </div>
+                            @enderror
                         </div>
                         <div class="text-group mb-3">
                             <label for="">Post Description</label><br>
-                            <textarea name="postDescription" cols="54" rows="10" placeholder="Enter Post Description..." required></textarea>
+                            <textarea name="postDescription" cols="54" rows="10" class="@error('postDescription') is-invalid @enderror"
+                                placeholder="Enter Post Description...">{{ old('postDescription') }}</textarea>
+                            @error('postDescription')
+                                <div class="invalid-feedback">
+                                    Post Description is required.
+                                </div>
+                            @enderror
                         </div>
                         <input type="submit" value="Create" class="btn btn-danger">
                     </form>
