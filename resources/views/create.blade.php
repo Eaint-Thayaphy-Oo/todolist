@@ -53,7 +53,7 @@
                                 placeholder="Enter Post Title...">
                             @error('postTitle')
                                 <div class="invalid-feedback">
-                                    Post Title is required.
+                                    {{ $message }}
                                 </div>
                             @enderror
                         </div>
@@ -63,7 +63,7 @@
                                 placeholder="Enter Post Description...">{{ old('postDescription') }}</textarea>
                             @error('postDescription')
                                 <div class="invalid-feedback">
-                                    Post Description is required.
+                                    {{ $message }}
                                 </div>
                             @enderror
                         </div>

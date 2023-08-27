@@ -36,12 +36,7 @@ class PostController extends Controller
         // }
 
         //New Validation
-        $validationRules = [
-            'postTitle' => 'required',
-            'postDescription' => 'required'
-        ];
-        Validator::make($request->all(), $validationRules)->validate();
-
+        $this->postValidationCheck($request);
         //dd($request->all());
         $data = $this->getPostData($request);
         //dd($data);
@@ -87,6 +82,7 @@ class PostController extends Controller
     public function update(Request $request)
     {
         // dd($request->all());
+        $this->postValidationCheck($request);
         $updateData = $this->getPostData($request);
         $id = $request->postId;
         Post::where('id', $id)->update($updateData);
@@ -103,5 +99,22 @@ class PostController extends Controller
         ];
 
         return $respone;
+    }
+
+    //post validation check
+    private function postValidationCheck($request)
+    {
+        $validationRules = [
+            'postTitle' => 'required|unique:posts,title|max:10|min:2',
+            'postDescription' => 'required|min:5'
+        ];
+
+        $validationMessage = [
+            'postTitle.required' => 'Post Title ဖြည့်ရန်လိုအပ်ပါသည်။',
+            'postDescription.required' => 'Post Description ဖြည့်ရန်လိုအပ်ပါသည်။',
+            'postTitle.min' => 'အနည်းဆုံး ၅ လုံးအထက်ရှိရပါမည်။',
+            'postTitle.unique' => 'Post Title ခေါင်းစဉ်တူနေပါသည်။ထပ်မံရိုက်ကြည့်ပါ။'
+        ];
+        Validator::make($request->all(), $validationRules, $validationMessage)->validate();
     }
 }
